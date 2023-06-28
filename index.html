@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Header Meta Tags -->
+    <title>Dad Joke Generator</title>
+    <link rel="stylesheet" href="source/styles.css" />
+    <meta name="robots" content="index,follow" />
+    <meta
+      name="description"
+      content="Generate funny dad jokes and enjoy a good laugh. Share hilarious dad jokes with your friends and family."
+    />
+    <meta
+      name="keywords"
+      content="dad jokes, funny jokes, humor, laughter, entertainment"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Social Meta Tags -->
+    <meta property="og:image:height" content="520" />
+    <meta property="og:image:width" content="993" />
+    <meta property="og:title" content="Dad Joke Generator" />
+    <meta
+      property="og:description"
+      content="Generate funny dad jokes and enjoy a good laugh. Share hilarious dad jokes with your friends and family."
+    />
+    <meta property="og:url" content="www.get-dad-jokes.com" />
+    <meta property="og:image" content="images/social-logo.jpg" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:title" content="Dad Joke Generator" />
+    <meta
+      name="twitter:description"
+      content="Generate funny dad jokes and enjoy a good laugh. Share hilarious dad jokes with your friends and family."
+    />
+    <meta name="twitter:image" content="images/social-logo.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body id="body">
+    <div>
+      <div class="fixedtopad">
+        <!-- This is where your 320x50 header ad code from Adsense goes -->
+      </div>
+      <div id="header" class="nav-bar"></div>
+      <div id="content">
+        <div id="tool-wrapper">
+          <div class="topad">
+            <!-- This is where your 300x250 top ad code from Adsense goes -->
+          </div>
+          <h1 class="header-calc">Dad Jokes</h1>
+          <div id="tool-random">
+            <button type="button" onclick="getRandomJoke()">
+              Get Random Joke
+            </button>
+
+            <p id="random-joke"></p>
+          </div>
+          <div id="tool-search">
+            <div class="container">
+              <div class="grid-item">
+                <h2 class="tool-header">Search Jokes</h2>
+              </div>
+              <div class="grid-item">
+                <input
+                  type="text"
+                  id="search-term"
+                  placeholder="Enter search term"
+                />
+              </div>
+              <div class="grid-item">
+                <button type="button" onclick="searchJoke()">Search</button>
+              </div>
+            </div>
+          </div>
+          <div id="search-results"></div>
+
+          <div class="bottomad">
+            <!-- This is where your 320x50 bottom ad code from Adsense goes -->
+          </div>
+        </div>
+        <div class="content-inner">
+          <div class="section minor">
+            <h3 class="subtitle-minor">About Body Mass Index (BMI)</h3>
+            <p class="subtext-minor">
+              BMI serves as a valuable tool in assessing overweight and obesity,
+              derived from the measurements of your height and weight. This
+              calculation provides an estimation of body fat and serves as a
+              reliable indicator of your susceptibility to diseases associated
+              with increased body fat. A higher BMI correlates with an elevated
+              risk of various conditions, including heart disease, high blood
+              pressure, type 2 diabetes, gallstones, breathing difficulties, and
+              specific types of cancers.
+            </p>
+            <p class="subtext-minor">
+              While BMI is generally applicable to most individuals, it does
+              possess certain limitations:
+            </p>
+            <ul>
+              <li class="subtext-minor">
+                Athletes and individuals with a well-developed muscular physique
+                may observe an overestimation of body fat when using BMI as it
+                does not account for the distinction between muscle and fat
+                mass.
+              </li>
+              <li class="subtext-minor">
+                Older individuals and those who have experienced muscle loss may
+                witness an underestimation of body fat due to reduced muscle
+                mass, which can affect the accuracy of the BMI calculation.
+              </li>
+            </ul>
+            <p class="subtext-minor">
+              These limitations highlight the need for a comprehensive approach
+              when evaluating an individual's health and weight status, taking
+              into account factors beyond BMI alone.
+            </p>
+            <p class="subtext-minor">
+              <i
+                >*Reference:
+                <a
+                  href="https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm#limitations"
+                  target="_blank"
+                  >National Heart, Lung, and Blood Institute</a
+                ></i
+              >
+            </p>
+          </div>
+          <hr />
+          <div class="section minor">
+            <h3 class="subtitle-minor">How is BMI Calculated?</h3>
+            <h4>Kilograms and meters (or centimeters)</h4>
+            <p class="subtext-minor">Formula: weight (kg) / [height (m)]2</p>
+            <p class="subtext-minor">
+              Example: Weight = 68 kg, Height = 165 cm (1.65 m)
+            </p>
+            <p class="subtext-minor">Calculation: 68 ÷ (1.65)2 = 24.98</p>
+            <h4>Pounds and inches</h4>
+            <p class="subtext-minor">
+              Formula: weight (lb) / [height (in)]2 x 703
+            </p>
+            <p class="subtext-minor">
+              Example: Weight = 150 lbs, Height = 5’5″ (65″)
+            </p>
+            <p class="subtext-minor">
+              Calculation: [150 ÷ (65)2] x 703 = 24.96
+            </p>
+          </div>
+          <hr />
+          <div class="section minor">
+            <h3 class="subtitle-minor">Risk Factors Associated with Obesity</h3>
+
+            <ul>
+              <li class="subtext-minor">High blood pressure (hypertension)</li>
+              <li class="subtext-minor">
+                High LDL cholesterol ("bad" cholesterol)
+              </li>
+              <li class="subtext-minor">
+                Low HDL cholesterol ("good" cholesterol)
+              </li>
+              <li class="subtext-minor">High triglycerides</li>
+              <li class="subtext-minor">High blood glucose (sugar)</li>
+              <li class="subtext-minor">
+                Family history of premature heart disease
+              </li>
+              <li class="subtext-minor">Physical inactivity</li>
+              <li class="subtext-minor">Cigarette smoking</li>
+            </ul>
+            <p class="subtext-minor">
+              <i
+                >*Reference:
+                <a
+                  href="https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm#limitations"
+                  target="_blank"
+                  >National Heart, Lung, and Blood Institute</a
+                ></i
+              >
+            </p>
+          </div>
+          <hr />
+          <div class="section minor">
+            <h3 class="subtitle-minor">
+              Questions about Body Mass Index (BMI)
+            </h3>
+
+            <ul>
+              <li>
+                <a
+                  href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html#Used"
+                  target="_blank"
+                  >How is BMI Used?</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html#trends"
+                  target="_blank"
+                  >What are the BMI trends for adults in the United States?</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html#Why"
+                  target="_blank"
+                  >Why is BMI used to measure overweight and obesity?</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="section minor">
+            <small>
+              Disclaimer: The information provided on this website is for
+              general informational purposes only and should not be considered
+              as medical advice. Always consult with your healthcare
+              professional or primary care physician before making any changes
+              to your diet, exercise routine, or health practices. Your doctor
+              is in the best position to evaluate your individual health status
+              and provide personalized recommendations. Remember that every
+              individual is unique, and what may be suitable for one person may
+              not be appropriate for another. Your doctor can assess your
+              specific medical history, current health condition, and any
+              potential contraindications before making any decisions regarding
+              your health. Taking proactive steps to ensure your well-being is
+              essential, and seeking professional medical advice is crucial to
+              make informed choices regarding your health and fitness journey.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fixedbottomad">
+      <!-- This is where your 320x50 footer ad code from Adsense goes -->
+    </div>
+    <div id="footer" class="footer"></div>
+    <script src="/index.js"></script>
+
+    <script>
+      function getRandomJoke() {
+        $.ajax({
+          url: "https://icanhazdadjoke.com/",
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+          success: function (response) {
+            var joke = response.joke;
+            document.getElementById("random-joke").innerHTML = joke;
+          },
+          error: function (xhr, status, error) {
+            console.log(error);
+          },
+        });
+      }
+
+      function searchJoke() {
+        var searchTerm = document.getElementById("search-term").value;
+
+        if (searchTerm.trim() !== "") {
+          $.ajax({
+            url: "https://icanhazdadjoke.com/search",
+            method: "GET",
+            data: {
+              term: searchTerm,
+            },
+            headers: {
+              Accept: "application/json",
+            },
+            success: function (response) {
+              var jokes = response.results;
+
+              if (jokes.length > 0) {
+                var joke = jokes[0].joke;
+                document.getElementById("search-results").innerHTML = joke;
+              } else {
+                document.getElementById("search-results").innerHTML =
+                  "Bummer! Your search sucks and didn't return results.";
+              }
+            },
+            error: function (xhr, status, error) {
+              console.log(error);
+            },
+          });
+        } else {
+          document.getElementById("search-results").innerHTML =
+            "Bro 🙄, you didn't enter a search term.";
+        }
+      }
+    </script>
+  </body>
+</html>
