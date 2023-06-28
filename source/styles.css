@@ -59,13 +59,14 @@ p {
   margin: 0;
 }
 ul {
-  margin-left: 40px;
+  /* margin-left: 40px; */
   padding: 0;
   max-width: 650px;
 }
 ul li {
   margin: 10px auto;
   text-align: left;
+  list-style: none;
 }
 
 hr {
@@ -110,7 +111,9 @@ button {
 
 .tool-header {
   color: white;
+  font-size: 28px;
 }
+
 .content-inner {
   text-align: left;
   padding: 0 20px;
@@ -346,8 +349,6 @@ button[type="button"] {
   margin-top: 20px;
   width: 200px;
   padding: 10px;
-  background-color: var(--green);
-  color: #fff;
   font-weight: 700;
   text-transform: uppercase;
   border: none;
@@ -355,7 +356,17 @@ button[type="button"] {
   border-radius: 4px;
 }
 
-button[type="button"]:hover {
+#random-btn {
+  background-color: var(--green);
+  color: #fff;
+}
+#search-btn {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+#random-btn:hover,
+#search-btn:hover {
   background-color: var(--yellow);
   color: var(--blue);
   transition: all 200ms ease-in-out;

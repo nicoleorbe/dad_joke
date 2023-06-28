@@ -71,9 +71,9 @@
           <div class="topad">
             <!-- This is where your 300x250 top ad code from Adsense goes -->
           </div>
-          <h1 class="header-calc">Dad Jokes</h1>
+          <!-- <h1 class="header-calc">Dad Jokes</h1> -->
           <div id="tool-random">
-            <button type="button" onclick="getRandomJoke()">
+            <button type="button" id="random-btn" onclick="getRandomJoke()">
               Get Random Joke
             </button>
 
@@ -92,11 +92,13 @@
                 />
               </div>
               <div class="grid-item">
-                <button type="button" onclick="searchJoke()">Search</button>
+                <button type="button" id="search-btn" onclick="searchJoke()">
+                  Search
+                </button>
               </div>
+              <div id="search-results"></div>
             </div>
           </div>
-          <div id="search-results"></div>
 
           <div class="bottomad">
             <!-- This is where your 320x50 bottom ad code from Adsense goes -->
@@ -104,148 +106,105 @@
         </div>
         <div class="content-inner">
           <div class="section minor">
-            <h3 class="subtitle-minor">About Body Mass Index (BMI)</h3>
-            <p class="subtext-minor">
-              BMI serves as a valuable tool in assessing overweight and obesity,
-              derived from the measurements of your height and weight. This
-              calculation provides an estimation of body fat and serves as a
-              reliable indicator of your susceptibility to diseases associated
-              with increased body fat. A higher BMI correlates with an elevated
-              risk of various conditions, including heart disease, high blood
-              pressure, type 2 diabetes, gallstones, breathing difficulties, and
-              specific types of cancers.
-            </p>
-            <p class="subtext-minor">
-              While BMI is generally applicable to most individuals, it does
-              possess certain limitations:
-            </p>
-            <ul>
-              <li class="subtext-minor">
-                Athletes and individuals with a well-developed muscular physique
-                may observe an overestimation of body fat when using BMI as it
-                does not account for the distinction between muscle and fat
-                mass.
-              </li>
-              <li class="subtext-minor">
-                Older individuals and those who have experienced muscle loss may
-                witness an underestimation of body fat due to reduced muscle
-                mass, which can affect the accuracy of the BMI calculation.
-              </li>
-            </ul>
-            <p class="subtext-minor">
-              These limitations highlight the need for a comprehensive approach
-              when evaluating an individual's health and weight status, taking
-              into account factors beyond BMI alone.
-            </p>
-            <p class="subtext-minor">
-              <i
-                >*Reference:
-                <a
-                  href="https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm#limitations"
-                  target="_blank"
-                  >National Heart, Lung, and Blood Institute</a
-                ></i
-              >
-            </p>
-          </div>
-          <hr />
-          <div class="section minor">
-            <h3 class="subtitle-minor">How is BMI Calculated?</h3>
-            <h4>Kilograms and meters (or centimeters)</h4>
-            <p class="subtext-minor">Formula: weight (kg) / [height (m)]2</p>
-            <p class="subtext-minor">
-              Example: Weight = 68 kg, Height = 165 cm (1.65 m)
-            </p>
-            <p class="subtext-minor">Calculation: 68 ÷ (1.65)2 = 24.98</p>
-            <h4>Pounds and inches</h4>
-            <p class="subtext-minor">
-              Formula: weight (lb) / [height (in)]2 x 703
-            </p>
-            <p class="subtext-minor">
-              Example: Weight = 150 lbs, Height = 5’5″ (65″)
-            </p>
-            <p class="subtext-minor">
-              Calculation: [150 ÷ (65)2] x 703 = 24.96
-            </p>
-          </div>
-          <hr />
-          <div class="section minor">
-            <h3 class="subtitle-minor">Risk Factors Associated with Obesity</h3>
-
-            <ul>
-              <li class="subtext-minor">High blood pressure (hypertension)</li>
-              <li class="subtext-minor">
-                High LDL cholesterol ("bad" cholesterol)
-              </li>
-              <li class="subtext-minor">
-                Low HDL cholesterol ("good" cholesterol)
-              </li>
-              <li class="subtext-minor">High triglycerides</li>
-              <li class="subtext-minor">High blood glucose (sugar)</li>
-              <li class="subtext-minor">
-                Family history of premature heart disease
-              </li>
-              <li class="subtext-minor">Physical inactivity</li>
-              <li class="subtext-minor">Cigarette smoking</li>
-            </ul>
-            <p class="subtext-minor">
-              <i
-                >*Reference:
-                <a
-                  href="https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm#limitations"
-                  target="_blank"
-                  >National Heart, Lung, and Blood Institute</a
-                ></i
-              >
-            </p>
-          </div>
-          <hr />
-          <div class="section minor">
             <h3 class="subtitle-minor">
-              Questions about Body Mass Index (BMI)
+              The History of Dad Jokes: Unveiling the Origins and Evolution of a
+              Timeless Form of Humor
             </h3>
+            <p class="subtext-minor">
+              Dad jokes, those infamous one-liners and pun-filled quips, have
+              become an enduring staple of comedic repertoire. They may make us
+              groan, roll our eyes, or burst into laughter, but have you ever
+              wondered about the history behind these universally beloved (and
+              sometimes cringe-worthy) jokes? Join us as we embark on a journey
+              to explore the captivating history of dad jokes and uncover their
+              evolution throughout the ages.
+            </p>
+            <p class="subtext-minor">
+              <strong> The Origins</strong>
+            </p>
+            <p class="subtext-minor">
+              While the exact origins of dad jokes are difficult to pinpoint,
+              their roots can be traced back to the earliest forms of humor.
+              From ancient proverbs to witty wordplay in folklore, fathers have
+              long delighted in sharing lighthearted jokes with their families.
+              These jokes often revolve around puns, wordplay, and clever twists
+              that elicit both laughter and groans.
+            </p>
+            <p class="subtext-minor">
+              <strong> Family Traditions</strong>
+            </p>
+            <p class="subtext-minor">
+              Dad jokes have historically played a significant role in family
+              dynamics. Passed down from one generation to another, they foster
+              a sense of bonding and create lasting memories. Dad jokes often
+              become a shared language within families, a way to connect and
+              lighten the mood during everyday interactions. The tradition of
+              dad jokes reinforces the unique role that fathers play in family
+              life, as both a source of humor and a provider of lighthearted
+              moments.
+            </p>
+            <p class="subtext-minor">
+              <strong>Cultural Significance</strong>
+            </p>
+            <p class="subtext-minor">
+              Dad jokes transcend cultural boundaries, taking on different forms
+              and adapting to various contexts around the world. Each culture
+              adds its own flair, incorporating local references,
+              language-specific puns, and cultural nuances. Whether it's the
+              British wit, the dry humor of Scandinavia, or the wordplay in
+              Eastern cultures, dad jokes showcase the universality of humor and
+              its ability to bring people together.
+            </p>
+            <p class="subtext-minor">
+              <strong>Dad Jokes in Popular Culture</strong>
+            </p>
+            <p class="subtext-minor">
+              In recent years, dad jokes have skyrocketed in popularity, finding
+              their way into various forms of media. They appear in movies,
+              sitcoms, and online platforms, becoming an integral part of modern
+              pop culture. Memes, social media pages, and YouTube channels
+              dedicated to dad jokes have emerged, demonstrating the widespread
+              appreciation for this unique brand of humor.
+            </p>
+            <p class="subtext-minor">
+              <strong>The Enduring Appeal</strong>
+            </p>
+            <p class="subtext-minor">
+              What is it about dad jokes that makes them so enduring? One theory
+              suggests that their inherent cheesiness and predictability
+              generate a certain charm, allowing us to revel in their delightful
+              simplicity. Dad jokes often rely on puns, wordplay, and clever
+              misdirection, making them accessible to people of all ages and
+              backgrounds. Moreover, they provide a safe and lighthearted form
+              of humor, offering a brief escape from the complexities of
+              everyday life.
+            </p>
+          </div>
+
+          <hr />
+          <div class="section minor">
+            <h3 class="subtitle-minor">Want to Learn More About Dad Jokes?</h3>
 
             <ul>
               <li>
-                <a
-                  href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html#Used"
-                  target="_blank"
-                  >How is BMI Used?</a
+                <a href="#" target="_blank"
+                  >How Dad Jokes Strengthen Family Bonds</a
                 >
               </li>
               <li>
-                <a
-                  href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html#trends"
-                  target="_blank"
-                  >What are the BMI trends for adults in the United States?</a
+                <a href="#" target="_blank">The Science Behind Dad Jokes</a>
+              </li>
+              <li>
+                <a href="#" target="_blank"
+                  >Dad Jokes in Pop Culture: From TV Shows to Memes</a
                 >
               </li>
               <li>
-                <a
-                  href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html#Why"
-                  target="_blank"
-                  >Why is BMI used to measure overweight and obesity?</a
+                <a href="#" target="_blank"
+                  >The Art of Crafting a Perfect Dad Joke</a
                 >
               </li>
             </ul>
-          </div>
-          <div class="section minor">
-            <small>
-              Disclaimer: The information provided on this website is for
-              general informational purposes only and should not be considered
-              as medical advice. Always consult with your healthcare
-              professional or primary care physician before making any changes
-              to your diet, exercise routine, or health practices. Your doctor
-              is in the best position to evaluate your individual health status
-              and provide personalized recommendations. Remember that every
-              individual is unique, and what may be suitable for one person may
-              not be appropriate for another. Your doctor can assess your
-              specific medical history, current health condition, and any
-              potential contraindications before making any decisions regarding
-              your health. Taking proactive steps to ensure your well-being is
-              essential, and seeking professional medical advice is crucial to
-              make informed choices regarding your health and fitness journey.
-            </small>
           </div>
         </div>
       </div>
