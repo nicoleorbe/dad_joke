@@ -152,10 +152,6 @@ ul li :hover {
   color: var(--green);
 }
 
-.subtext-wrapper {
-  margin: 25px 0;
-}
-
 .footer {
   color: #fff;
   background: var(--blue);
@@ -207,13 +203,6 @@ ul li :hover {
 .nav-bar a:hover,
 .nav-bar span:hover {
   color: var(--red);
-}
-
-/* Tool */
-
-#form-wrapper {
-  display: block;
-  margin-bottom: 10px;
 }
 
 /* Ads */
@@ -387,33 +376,6 @@ button[type="button"] {
   color: white;
 }
 
-/* healthy bmi chart */
-.grid-healthy {
-  display: grid;
-  max-width: 300px;
-  margin: 0 auto;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 10px;
-}
-
-.grid-items-healthy {
-  grid-column: auto;
-  place-self: center;
-}
-
-.header-chart {
-  font-size: 20px;
-  margin: 20px;
-}
-.chart-col-header {
-  font-weight: bold;
-}
-
 /* workout page grid */
 .grid-workout {
   display: grid;
@@ -469,22 +431,9 @@ button[type="button"] {
   }
 }
 
-@media only screen and (min-width: 651px) {
-  #menu-burger {
-    top: -3px;
-    right: calc(50vw - 235px);
-  }
-}
-
 @media only screen and (max-width: 650px) and (min-height: 721px) {
   h1 {
     font-size: 30px;
-  }
-  #menu-burger {
-    color: #222;
-    background: #fff;
-    top: 0;
-    right: 10px;
   }
   #header {
     /* change back when ads added */
@@ -530,12 +479,7 @@ button[type="button"] {
   h1 {
     font-size: 28px;
   }
-  #menu-burger {
-    color: #222;
-    background: #fff;
-    top: 0;
-    right: 10px;
-  }
+
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -580,12 +524,7 @@ button[type="button"] {
   h1 {
     font-size: 26px;
   }
-  #menu-burger {
-    color: #222;
-    background: #fff;
-    top: 0;
-    right: 10px;
-  }
+
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -631,12 +570,6 @@ button[type="button"] {
     font-size: 24px;
   }
 
-  #menu-burger {
-    color: #222;
-    background: #fff;
-    top: 0;
-    right: 10px;
-  }
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -651,10 +584,6 @@ button[type="button"] {
     .grid-workout {
       grid-template-columns: repeat(1, 1fr);
     }
-  }
-
-  #result-image img {
-    width: 80vw;
   }
 
   #tool {
@@ -739,9 +668,5 @@ button[type="button"] {
 @media only screen and (max-width: 320px) {
   #header {
     padding: 10px 10px;
-  }
-
-  #result-image img {
-    width: 80vw;
   }
 }
