@@ -25,7 +25,10 @@
       content="Generate funny dad jokes and enjoy a good laugh. Share hilarious dad jokes with your friends and family."
     />
     <meta property="og:url" content="www.get-dad-jokes.com" />
-    <meta property="og:image" content="images/social-logo.jpg" />
+    <meta
+      property="og:image"
+      content="https://www.get-dad-jokes.com/images/social-logo.jpg"
+    />
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="website" />
     <meta name="twitter:title" content="Dad Joke Generator" />
@@ -33,8 +36,10 @@
       name="twitter:description"
       content="Generate funny dad jokes and enjoy a good laugh. Share hilarious dad jokes with your friends and family."
     />
-    <meta name="twitter:image" content="images/social-logo.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://www.get-dad-jokes.com/images/social-logo.jpg"
+    />
     <!-- Icons -->
     <link
       rel="apple-touch-icon"
@@ -273,7 +278,8 @@
               var jokes = response.results;
 
               if (jokes.length > 0) {
-                var joke = jokes[0].joke;
+                var randomIndex = Math.floor(Math.random() * jokes.length);
+                var joke = jokes[randomIndex].joke;
                 document.getElementById("search-results").innerHTML = joke;
               } else {
                 document.getElementById("search-results").innerHTML =
