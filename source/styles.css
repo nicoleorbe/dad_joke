@@ -462,13 +462,13 @@ button[type="button"] {
   .fixedbottomad {
     background: #fff;
   }
-  .fixedtopad,
+  /* .fixedtopad,
   .fixedtopad .adsbygoogle,
   .fixedbottomad,
   .fixedbottomad .adsbygoogle {
     height: 60px;
     max-height: 60px;
-  }
+  } */
   .leftad,
   .rightad {
     display: none !important;
@@ -507,13 +507,13 @@ button[type="button"] {
   .fixedbottomad {
     background: #fff;
   }
-  .fixedtopad,
+  /* .fixedtopad,
   .fixedtopad .adsbygoogle,
   .fixedbottomad,
   .fixedbottomad .adsbygoogle {
     height: 60px;
     max-height: 60px;
-  }
+  } */
   .leftad,
   .rightad {
     display: none !important;
@@ -552,13 +552,13 @@ button[type="button"] {
   .fixedbottomad {
     background: #fff;
   }
-  .fixedtopad,
+  /* .fixedtopad,
   .fixedtopad .adsbygoogle,
   .fixedbottomad,
   .fixedbottomad .adsbygoogle {
     height: 60px;
     max-height: 60px;
-  }
+  } */
   .leftad,
   .rightad {
     display: none !important;
@@ -608,13 +608,13 @@ button[type="button"] {
   .fixedbottomad {
     background: #fff;
   }
-  .fixedtopad,
+  /* .fixedtopad,
   .fixedtopad .adsbygoogle,
   .fixedbottomad,
   .fixedbottomad .adsbygoogle {
     height: 60px;
     max-height: 60px;
-  }
+  }  */
   .leftad,
   .rightad {
     display: none !important;
@@ -640,7 +640,7 @@ button[type="button"] {
   .fixedbottomad .adsbygoogle {
     display: block;
   }
-  .fixedtopad,
+  /* .fixedtopad,
   .fixedbottomad {
     background: #fff;
   }
@@ -650,7 +650,7 @@ button[type="button"] {
   .fixedbottomad .adsbygoogle {
     height: 60px;
     max-height: 60px;
-  }
+  } */
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
