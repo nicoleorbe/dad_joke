@@ -6,7 +6,7 @@
   --light: #e0eaef;
   --main-font-color: #222;
   --sec-font-color: #444;
-  --main-font: "Trebuchet MS", sans-serif;
+  --main-font: "Arial Narrow", Arial, sans-serif;
 }
 
 body,
@@ -22,10 +22,8 @@ body {
 }
 
 a,
-a:hover,
-a:active,
-a:visited {
-  color: var(--dark-blue);
+a:hover {
+  color: var(--green);
   text-decoration: none;
 }
 h1,
@@ -40,6 +38,7 @@ h6 {
 
 h1 {
   font-size: 36px;
+  font-weight: bold;
 }
 
 h1 a,
@@ -47,6 +46,9 @@ h1 a:visited,
 h1 a:active,
 h1:hover a {
   color: var(--red);
+}
+h2 {
+  color: var(--green);
 }
 
 h4 {
@@ -58,6 +60,7 @@ h4 {
 p {
   margin: 0;
 }
+
 ul {
   padding: 0;
   max-width: 650px;
@@ -71,10 +74,6 @@ ul li {
 hr {
   color: #f5f5f5;
   border: 1px solid #f5f5f5;
-}
-
-button {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 #header {
@@ -98,7 +97,7 @@ button {
 }
 
 .blog-hero {
-  max-height: 400px;
+  max-width: 90vw;
   margin-bottom: 20px;
   border-radius: 4px;
   box-shadow: 5px 0 5px rgba(0, 0, 0, 0.05);
@@ -126,17 +125,12 @@ button {
   margin: 25px;
 }
 
-.section.minor small {
-  font-style: italic;
-  font-size: 12px;
-}
-
 .subtitle-minor {
-  font-size: 20px;
-  color: var(--sec-font-color);
+  margin-top: 10px;
+  font-size: 24px;
 }
 .subtext-minor {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--sec-font-color);
   margin-top: 15px;
   line-height: 1.6em;
@@ -145,11 +139,6 @@ button {
 .subtext-minor a,
 ul li a {
   color: var(--red);
-}
-
-.subtext-minor a:hover,
-ul li :hover {
-  color: var(--green);
 }
 
 .footer {
@@ -320,12 +309,6 @@ ul li :hover {
   align-self: center;
 }
 
-.grid-item label {
-  color: white;
-  font-style: bold;
-  font-size: 18px;
-}
-
 input[type="text"] {
   width: 80%;
   padding: 6px;
@@ -360,13 +343,6 @@ button[type="button"] {
   transition: all 200ms ease-in-out;
 }
 
-.formSelect {
-  padding: 5px;
-  width: 100px;
-  border-radius: 4px;
-  border-style: none;
-}
-
 #random-joke,
 #search-results {
   font-weight: bold;
@@ -376,48 +352,12 @@ button[type="button"] {
   color: white;
 }
 
-/* workout page grid */
-.grid-workout {
-  display: grid;
-  max-width: 80vw;
-  margin: 0 auto;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  grid-column-gap: 10px;
-  grid-row-gap: 20px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 30px 10px;
-}
-
-.grid-items-workout {
-  grid-column: auto;
-  place-self: center;
-}
-
-.grid-items-workout h3 {
-  margin-bottom: 10px;
-  color: var(--green);
-}
-
 /* Dynamic Styles*/
 
 @media only screen and (max-width: 1120px) {
   .leftad,
   .rightad {
     display: none;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .grid-workout {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .grid-workout {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -432,9 +372,6 @@ button[type="button"] {
 }
 
 @media only screen and (max-width: 650px) and (min-height: 721px) {
-  h1 {
-    font-size: 30px;
-  }
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -476,10 +413,6 @@ button[type="button"] {
 }
 
 @media only screen and (max-width: 650px) and (min-height: 667px) and (max-height: 720px) {
-  h1 {
-    font-size: 28px;
-  }
-
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -521,10 +454,6 @@ button[type="button"] {
 }
 
 @media only screen and (max-width: 650px) and (max-height: 666px) {
-  h1 {
-    font-size: 26px;
-  }
-
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -566,10 +495,6 @@ button[type="button"] {
 }
 
 @media only screen and (max-width: 650px) {
-  h1 {
-    font-size: 24px;
-  }
-
   #header {
     /* change back when ads added */
     /* margin: 70px auto 15px auto; */
@@ -578,12 +503,6 @@ button[type="button"] {
 
   .logotext {
     display: none;
-  }
-
-  @media only screen and (max-width: 800px) {
-    .grid-workout {
-      grid-template-columns: repeat(1, 1fr);
-    }
   }
 
   #tool {
@@ -632,9 +551,6 @@ button[type="button"] {
   .logotext {
     display: none;
   }
-  #result-image img {
-    width: 80vw;
-  }
 
   .fixedbottomad,
   .fixedbottomad .adsbygoogle {
@@ -660,9 +576,6 @@ button[type="button"] {
   .rightad {
     display: none !important;
   }
-}
-
-@media only screen and (max-width: 360px) {
 }
 
 @media only screen and (max-width: 320px) {

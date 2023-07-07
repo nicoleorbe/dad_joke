@@ -10,9 +10,7 @@ window.addEventListener("load", function () {
               alt="Dad Jokes Foam Finger"
             />
             <span class="logotext">Get Dad Jokes</span>
-          </a>
-      
-        <a href="/blog.html">Blog</a>`;
+          </a>`;
 });
 
 // Footer
