@@ -120,7 +120,11 @@
             </button>
 
             <p id="random-joke"></p>
-            <a id="twitter-share-button" href="" target="_blank"
+            <a
+              id="twitter-share-button"
+              href=""
+              target="_blank"
+              onclick="trackTwitterShare()"
               >Share on Twitter<i
                 class="fa-brands fa-twitter"
                 style="margin-left: 4px"
@@ -314,6 +318,17 @@
     </div>
 
     <script>
+      function trackTwitterShare() {
+        // Send event to Google Analytics
+        gtag("event", "share", {
+          event_category: "Twitter",
+          event_label: "Share",
+        });
+
+        // Redirect to Twitter
+        window.open(this.href, "_blank");
+      }
+
       function getRandomJoke() {
         $.ajax({
           url: "https://icanhazdadjoke.com/",
