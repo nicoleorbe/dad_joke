@@ -1,16 +1,18 @@
 // Header
 window.addEventListener("load", function () {
   document.getElementById("header").innerHTML = `
-          <a href="/index.html">
-            <img
-              class="logoimage"
-              src="images/android-chrome-512x512.png"
-              width="50"
-              height="50"
-              alt="Dad Jokes Foam Finger"
-            />
-            <span class="logotext">Get Dad Jokes</span>
-          </a>`;
+          <a href="https://www.get-dad-jokes.com">
+          <img
+            class="logoimage"
+            src="images/android-chrome-512x512.png"
+            width="50"
+            height="50"
+            alt="Dad Jokes Foam Finger"
+          />
+          <span class="logotext">Get Dad Jokes</span>
+        </a>
+        <a href="https://www.get-dad-jokes.com/blog">Blog</a>
+          `;
 });
 
 // Footer
