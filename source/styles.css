@@ -177,6 +177,19 @@ ul li a {
   background-color: var(--blue);
 }
 
+#twitter-share-button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: var(--yellow);
+  color: var(--blue);
+  font-weight: bold;
+}
+
+#twitter-share-button:hover {
+  background-color: var(--red);
+}
+
 .footer {
   color: #fff;
   background: var(--blue);
