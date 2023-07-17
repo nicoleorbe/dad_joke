@@ -116,6 +116,9 @@
             </button>
 
             <p id="random-joke"></p>
+            <a id="twitter-share-button" href="" target="_blank"
+              >Share on Twitter</a
+            >
           </div>
           <div id="tool-search">
             <div class="container">
@@ -314,12 +317,29 @@
           success: function (response) {
             var joke = response.joke;
             document.getElementById("random-joke").innerHTML = joke;
+
+            // Create the Twitter sharing URL
+            var websiteUrl = "www.get-dad-jokes.com"; // Replace with your website URL
+
+            var encodedJoke = joke;
+
+            var tweetText =
+              encodedJoke + "\n\nGet more jokes here: " + websiteUrl;
+
+            var twitterShareUrl =
+              "https://twitter.com/intent/tweet?text=" + encodeURI(tweetText);
+
+            // Update the "Share on Twitter" button link
+            var twitterButton = document.getElementById("twitter-share-button");
+            twitterButton.href = twitterShareUrl;
           },
           error: function (xhr, status, error) {
             console.log(error);
           },
         });
       }
+
+      window.onload = getRandomJoke;
 
       function searchJoke() {
         var searchTerm = document.getElementById("search-term").value;
