@@ -410,10 +410,6 @@
           // Already installed or running in standalone mode
           return;
         }
-
-        var deferredPrompt;
-        var addBtn = document.querySelector("#add-to-home-screen");
-        console.log(addBtn);
         window.addEventListener("beforeinstallprompt", function (e) {
           // Prevent the default prompt
           e.preventDefault();
@@ -424,6 +420,9 @@
           // Show the button
           addBtn.style.display = "block";
         });
+        var deferredPrompt;
+        var addBtn = document.querySelector("#add-to-home-screen");
+        console.log(addBtn);
 
         addBtn.addEventListener("click", function () {
           // Hide the button
