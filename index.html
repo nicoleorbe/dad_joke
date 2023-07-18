@@ -92,6 +92,31 @@
   </head>
 
   <body id="body">
+    <!-- pop-up -->
+    <div id="popup" style="display: none">
+      <div id="popup-content">
+        <h2>Having fun?</h2>
+        <h2>Save this app to your home screen!</h2>
+        <p style="margin-bottom: 20px">
+          Tap "Add to Home Screen" to enjoy quick access to this app.
+        </p>
+        <div>
+          <button
+            class="save-button"
+            style="margin-bottom: 20px"
+            onclick="addToHomeScreen()"
+          >
+            Add to Home Screen
+          </button>
+        </div>
+        <div>
+          <button id="close-button" onclick="closePopup()">Close</button>
+        </div>
+
+        <!-- <span id="close-icon" onclick="closePopup()">&#10005;</span> -->
+      </div>
+    </div>
+
     <div>
       <div class="fixedtopad">
         <!-- This is where your 320x50 header ad code from Adsense goes -->
@@ -333,10 +358,23 @@
           event_category: "Twitter",
           event_label: "Share",
         });
-
-        // // Redirect to Twitter
-        // window.open(this.href, "_blank");
       }
+
+      // Function to show the popup
+      function showPopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
+      }
+
+      // Function to close the popup and refresh the page
+      function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+        location.reload(); // Refresh the page
+      }
+
+      // Set timeout for 10 seconds (10000 milliseconds)
+      setTimeout(showPopup, 10000);
 
       function getRandomJoke() {
         $.ajax({

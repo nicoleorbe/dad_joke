@@ -178,7 +178,8 @@ ul li a {
 }
 
 #twitter-share-button,
-.save-button {
+.save-button,
+#close-button {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
@@ -188,7 +189,21 @@ ul li a {
 }
 
 #twitter-share-button:hover,
-.save-button:hover {
+.save-button:hover,
+#close-button:hover {
+  background-color: var(--red);
+}
+
+#close-button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: var(--green);
+  color: var(--blue);
+  font-weight: bold;
+}
+
+#close-button:hover {
   background-color: var(--red);
 }
 
@@ -205,6 +220,46 @@ ul li a {
   color: var(--red);
 }
 
+/* Pop-up styling */
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#popup-content {
+  background-color: white;
+  color: var(--blue);
+  margin: 50% auto;
+  padding: 80px 20px;
+  text-align: center;
+  max-width: 80%;
+  border-radius: 4px;
+}
+
+#popup-content h2 {
+  color: var(--green);
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#popup-content p {
+  color: var(--blue);
+  font-size: 22px;
+}
+
+#close-button {
+  margin-top: 10px;
+}
+
+/* Footer */
 .footer {
   color: #fff;
   background: var(--blue);
