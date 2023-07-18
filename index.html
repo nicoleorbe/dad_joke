@@ -95,9 +95,11 @@
     <!-- pop-up -->
     <div id="popup" style="display: none">
       <div id="popup-content">
-        <h2>Having fun?</h2>
-        <h2>Save this app to your home screen!</h2>
-        <p style="margin-bottom: 20px">
+        <h2 id="popup-title">
+          Having fun? <br />Save this app to your home screen!
+        </h2>
+
+        <p id="popup-message" style="margin-bottom: 20px">
           Tap "Add to Home Screen" to enjoy quick access to this app.
         </p>
         <div>
@@ -360,10 +362,32 @@
         });
       }
 
+      // Function to check if the popup has been displayed
+      function isPopupDisplayed() {
+        return localStorage.getItem("popupDisplayed") === "true";
+      }
+
+      // Function to set the flag indicating the popup has been displayed
+      function setPopupDisplayed() {
+        localStorage.setItem("popupDisplayed", "true");
+      }
+
       // Function to show the popup
       function showPopup() {
-        var popup = document.getElementById("popup");
-        popup.style.display = "block";
+        if (!isPopupDisplayed()) {
+          var popup = document.getElementById("popup");
+          var title = document.getElementById("popup-title");
+          var message = document.getElementById("popup-message");
+
+          if (isComingFromHomeScreen()) {
+            title.textContent = "Welcome Back!";
+            message.textContent =
+              "Don't forget to share your favorite to Twitter by tapping the 'Share on Twitter' button.";
+          }
+
+          popup.style.display = "block";
+          setPopupDisplayed();
+        }
       }
 
       // Function to close the popup and refresh the page
@@ -371,6 +395,14 @@
         var popup = document.getElementById("popup");
         popup.style.display = "none";
         location.reload(); // Refresh the page
+      }
+
+      // Function to check if the app is launched from the home screen
+      function isComingFromHomeScreen() {
+        return (
+          window.matchMedia("(display-mode: standalone)").matches ||
+          window.navigator.standalone
+        );
       }
 
       // Set timeout for 10 seconds (10000 milliseconds)
