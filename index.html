@@ -359,14 +359,6 @@
     </div>
 
     <script>
-      function trackTwitterShare() {
-        // Send event to Google Analytics
-        gtag("event", "share", {
-          event_category: "Twitter",
-          event_label: "Share",
-        });
-      }
-
       // Function to check if the popup has been displayed
       function isPopupDisplayed() {
         return localStorage.getItem("popupDisplayed") === "true";
@@ -375,6 +367,39 @@
       // Function to set the flag indicating the popup has been displayed
       function setPopupDisplayed() {
         localStorage.setItem("popupDisplayed", "true");
+      }
+
+      // Function to show the popup
+      function showPopup() {
+        if (!isPopupDisplayed()) {
+          var popup = document.getElementById("popup");
+          var title = document.getElementById("popup-title");
+          var message = document.getElementById("popup-message");
+
+          if (isComingFromHomeScreen()) {
+            title.textContent = "Welcome Back!";
+            message.textContent =
+              "Don't forget to share your favorite to Twitter by tapping the 'Share on Twitter' button.";
+          }
+
+          popup.style.display = "block";
+          setPopupDisplayed();
+        }
+      }
+
+      // Function to close the popup and refresh the page
+      function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+        location.reload(); // Refresh the page
+      }
+
+      // Function to check if the app is launched from the home screen
+      function isComingFromHomeScreen() {
+        return (
+          window.matchMedia("(display-mode: standalone)").matches ||
+          window.navigator.standalone
+        );
       }
 
       function addToHomeScreen() {
@@ -419,39 +444,6 @@
             deferredPrompt = null;
           });
         });
-      }
-
-      // Function to show the popup
-      function showPopup() {
-        if (!isPopupDisplayed()) {
-          var popup = document.getElementById("popup");
-          var title = document.getElementById("popup-title");
-          var message = document.getElementById("popup-message");
-
-          if (isComingFromHomeScreen()) {
-            title.textContent = "Welcome Back!";
-            message.textContent =
-              "Don't forget to share your favorite to Twitter by tapping the 'Share on Twitter' button.";
-          }
-
-          popup.style.display = "block";
-          setPopupDisplayed();
-        }
-      }
-
-      // Function to close the popup and refresh the page
-      function closePopup() {
-        var popup = document.getElementById("popup");
-        popup.style.display = "none";
-        location.reload(); // Refresh the page
-      }
-
-      // Function to check if the app is launched from the home screen
-      function isComingFromHomeScreen() {
-        return (
-          window.matchMedia("(display-mode: standalone)").matches ||
-          window.navigator.standalone
-        );
       }
 
       // Set timeout for 10 seconds (10000 milliseconds)
@@ -525,6 +517,14 @@
           document.getElementById("search-results").innerHTML =
             "Bro 🙄, you didn't enter a search term.";
         }
+      }
+
+      function trackTwitterShare() {
+        // Send event to Google Analytics
+        gtag("event", "share", {
+          event_category: "Twitter",
+          event_label: "Share",
+        });
       }
     </script>
   </body>
