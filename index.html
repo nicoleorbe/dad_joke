@@ -360,189 +360,187 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Function to check if the popup has been displayed
-        function isPopupDisplayed() {
-          return localStorage.getItem("popupDisplayed") === "true";
+      // document.addEventListener("DOMContentLoaded", function () {
+      // Function to check if the popup has been displayed
+      function isPopupDisplayed() {
+        return localStorage.getItem("popupDisplayed") === "true";
+      }
+
+      // Function to set the flag indicating the popup has been displayed
+      function setPopupDisplayed() {
+        localStorage.setItem("popupDisplayed", "true");
+      }
+
+      // Function to show the popup
+      function showPopup() {
+        if (!isPopupDisplayed()) {
+          var popup = document.getElementById("popup");
+          var title = document.getElementById("popup-title");
+          var message = document.getElementById("popup-message");
+
+          if (isComingFromHomeScreen()) {
+            title.textContent = "Welcome Back!";
+            message.textContent =
+              "Don't forget to share your favorite to Twitter by tapping the 'Share on Twitter' button.";
+          }
+
+          popup.style.display = "block";
+          setPopupDisplayed();
+        }
+      }
+
+      // Function to close the popup and refresh the page
+      function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+        location.reload(); // Refresh the page
+      }
+
+      // Function to check if the app is launched from the home screen
+      function isComingFromHomeScreen() {
+        return (
+          window.matchMedia("(display-mode: standalone)").matches ||
+          window.navigator.standalone
+        );
+      }
+
+      var deferredPrompt;
+
+      function addToHomeScreen() {
+        if (
+          window.navigator.standalone === true ||
+          window.matchMedia("(display-mode: standalone)").matches
+        ) {
+          // Already installed or running in standalone mode
+          return;
         }
 
-        // Function to set the flag indicating the popup has been displayed
-        function setPopupDisplayed() {
-          localStorage.setItem("popupDisplayed", "true");
-        }
+        var addBtn = document.querySelector("#add-to-home-screen");
 
-        // Function to show the popup
-        function showPopup() {
-          if (!isPopupDisplayed()) {
-            var popup = document.getElementById("popup");
-            var title = document.getElementById("popup-title");
-            var message = document.getElementById("popup-message");
+        window.addEventListener("beforeinstallprompt", function (e) {
+          // Prevent the default prompt
+          e.preventDefault();
 
-            if (isComingFromHomeScreen()) {
-              title.textContent = "Welcome Back!";
-              message.textContent =
-                "Don't forget to share your favorite to Twitter by tapping the 'Share on Twitter' button.";
+          // Store the event for later use
+          deferredPrompt = e;
+
+          // Show the button
+          addBtn.style.display = "block";
+        });
+
+        addBtn.addEventListener("click", function () {
+          // Hide the button
+          addBtn.style.display = "none";
+
+          // Show the prompt
+          deferredPrompt.prompt();
+
+          // Wait for the user to respond
+          deferredPrompt.userChoice.then(function (choiceResult) {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the A2HS prompt");
+            } else {
+              console.log("User dismissed the A2HS prompt");
             }
 
-            popup.style.display = "block";
-            setPopupDisplayed();
-          }
-        }
-
-        // Function to close the popup and refresh the page
-        function closePopup() {
-          var popup = document.getElementById("popup");
-          popup.style.display = "none";
-          location.reload(); // Refresh the page
-        }
-
-        // Function to check if the app is launched from the home screen
-        function isComingFromHomeScreen() {
-          return (
-            window.matchMedia("(display-mode: standalone)").matches ||
-            window.navigator.standalone
-          );
-        }
-
-        var deferredPrompt;
-
-        function addToHomeScreen() {
-          if (
-            window.navigator.standalone === true ||
-            window.matchMedia("(display-mode: standalone)").matches
-          ) {
-            // Already installed or running in standalone mode
-            return;
-          }
-
-          var addBtn = document.querySelector("#add-to-home-screen");
-
-          window.addEventListener("beforeinstallprompt", function (e) {
-            // Prevent the default prompt
-            e.preventDefault();
-
-            // Store the event for later use
-            deferredPrompt = e;
-
-            // Show the button
-            addBtn.style.display = "block";
+            // Clear the prompt variable
+            deferredPrompt = null;
           });
+        });
+      }
 
-          addBtn.addEventListener("click", function () {
-            // Hide the button
-            addBtn.style.display = "none";
+      // Set timeout for 10 seconds (10000 milliseconds)
+      setTimeout(showPopup, 10000);
 
-            // Show the prompt
-            deferredPrompt.prompt();
+      // Joke generators
+      function getRandomJoke() {
+        $.ajax({
+          url: "https://icanhazdadjoke.com/",
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+          success: function (response) {
+            var joke = response.joke;
+            document.getElementById("random-joke").innerHTML = joke;
 
-            // Wait for the user to respond
-            deferredPrompt.userChoice.then(function (choiceResult) {
-              if (choiceResult.outcome === "accepted") {
-                console.log("User accepted the A2HS prompt");
-              } else {
-                console.log("User dismissed the A2HS prompt");
-              }
+            // Create the Twitter sharing URL
+            var websiteUrl = "www.get-dad-jokes.com"; // Replace with your website URL
 
-              // Clear the prompt variable
-              deferredPrompt = null;
-            });
-          });
-        }
+            var encodedJoke = joke;
 
-        // Set timeout for 10 seconds (10000 milliseconds)
-        setTimeout(showPopup, 10000);
+            var tweetText =
+              encodedJoke + "\n\nGet more jokes here: " + websiteUrl;
 
-        // Joke generators
-        function getRandomJoke() {
+            var twitterShareUrl =
+              "https://twitter.com/intent/tweet?text=" + encodeURI(tweetText);
+
+            // Update the "Share on Twitter" button link
+            var twitterButton = document.getElementById("twitter-share-button");
+            twitterButton.href = twitterShareUrl;
+          },
+          error: function (xhr, status, error) {
+            console.log(error);
+          },
+        });
+      }
+
+      window.onload = getRandomJoke;
+
+      function searchJoke() {
+        var searchTerm = document.getElementById("search-term").value;
+
+        if (searchTerm.trim() !== "") {
           $.ajax({
-            url: "https://icanhazdadjoke.com/",
+            url: "https://icanhazdadjoke.com/search",
             method: "GET",
+            data: {
+              term: searchTerm,
+            },
             headers: {
               Accept: "application/json",
             },
             success: function (response) {
-              var joke = response.joke;
-              document.getElementById("random-joke").innerHTML = joke;
+              var jokes = response.results;
 
-              // Create the Twitter sharing URL
-              var websiteUrl = "www.get-dad-jokes.com"; // Replace with your website URL
-
-              var encodedJoke = joke;
-
-              var tweetText =
-                encodedJoke + "\n\nGet more jokes here: " + websiteUrl;
-
-              var twitterShareUrl =
-                "https://twitter.com/intent/tweet?text=" + encodeURI(tweetText);
-
-              // Update the "Share on Twitter" button link
-              var twitterButton = document.getElementById(
-                "twitter-share-button"
-              );
-              twitterButton.href = twitterShareUrl;
+              if (jokes.length > 0) {
+                var randomIndex = Math.floor(Math.random() * jokes.length);
+                var joke = jokes[randomIndex].joke;
+                document.getElementById("search-results").innerHTML = joke;
+              } else {
+                document.getElementById("search-results").innerHTML =
+                  "Bummer! Your search sucks and didn't return results.";
+              }
             },
             error: function (xhr, status, error) {
               console.log(error);
             },
           });
+        } else {
+          document.getElementById("search-results").innerHTML =
+            "Bro 🙄, you didn't enter a search term.";
         }
+      }
 
-        window.onload = getRandomJoke;
+      function trackTwitterShare() {
+        // Send event to Google Analytics
+        gtag("event", "share", {
+          event_category: "Twitter",
+          event_label: "Share",
+        });
+      }
 
-        function searchJoke() {
-          var searchTerm = document.getElementById("search-term").value;
-
-          if (searchTerm.trim() !== "") {
-            $.ajax({
-              url: "https://icanhazdadjoke.com/search",
-              method: "GET",
-              data: {
-                term: searchTerm,
-              },
-              headers: {
-                Accept: "application/json",
-              },
-              success: function (response) {
-                var jokes = response.results;
-
-                if (jokes.length > 0) {
-                  var randomIndex = Math.floor(Math.random() * jokes.length);
-                  var joke = jokes[randomIndex].joke;
-                  document.getElementById("search-results").innerHTML = joke;
-                } else {
-                  document.getElementById("search-results").innerHTML =
-                    "Bummer! Your search sucks and didn't return results.";
-                }
-              },
-              error: function (xhr, status, error) {
-                console.log(error);
-              },
-            });
-          } else {
-            document.getElementById("search-results").innerHTML =
-              "Bro 🙄, you didn't enter a search term.";
-          }
-        }
-
-        function trackTwitterShare() {
-          // Send event to Google Analytics
-          gtag("event", "share", {
-            event_category: "Twitter",
-            event_label: "Share",
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function (registration) {
+            console.log("Service Worker registered");
+          })
+          .catch(function (error) {
+            console.log("Service Worker registration failed:", error);
           });
-        }
-
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker
-            .register("/service-worker.js")
-            .then(function (registration) {
-              console.log("Service Worker registered");
-            })
-            .catch(function (error) {
-              console.log("Service Worker registration failed:", error);
-            });
-        }
-      });
+      }
+      // });
     </script>
   </body>
 </html>
