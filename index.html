@@ -105,6 +105,7 @@
         <div>
           <button
             class="save-button"
+            id="add-to-home-screen"
             style="margin-bottom: 20px"
             onclick="addToHomeScreen()"
           >
@@ -184,7 +185,11 @@
               Enjoying yourself? Keep the fun going by saving this to your home
               screen for quick access!
             </h2>
-            <button class="save-button" onclick="addToHomeScreen()">
+            <button
+              class="save-button"
+              id="add-to-home-screen"
+              onclick="addToHomeScreen()"
+            >
               Add to Home Screen
             </button>
           </div>
@@ -405,9 +410,61 @@
         );
       }
 
+      // Function to check if the device is mobile
+      function isMobileDevice() {
+        return (
+          /Mobi/i.test(navigator.userAgent) ||
+          /Android/i.test(navigator.userAgent)
+        );
+      }
       // Set timeout for 10 seconds (10000 milliseconds)
       setTimeout(showPopup, 10000);
 
+      function addToHomeScreen() {
+        if (
+          window.navigator.standalone === true ||
+          window.matchMedia("(display-mode: standalone)").matches
+        ) {
+          // Already installed or running in standalone mode
+          return;
+        }
+
+        var deferredPrompt;
+        var addBtn = document.querySelector("#add-to-home-screen");
+
+        window.addEventListener("beforeinstallprompt", function (e) {
+          // Prevent the default prompt
+          e.preventDefault();
+
+          // Store the event for later use
+          deferredPrompt = e;
+
+          // Show the button
+          addBtn.style.display = "block";
+        });
+
+        addBtn.addEventListener("click", function () {
+          // Hide the button
+          addBtn.style.display = "none";
+
+          // Show the prompt
+          deferredPrompt.prompt();
+
+          // Wait for the user to respond
+          deferredPrompt.userChoice.then(function (choiceResult) {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the A2HS prompt");
+            } else {
+              console.log("User dismissed the A2HS prompt");
+            }
+
+            // Clear the prompt variable
+            deferredPrompt = null;
+          });
+        });
+      }
+
+      // Joke generators
       function getRandomJoke() {
         $.ajax({
           url: "https://icanhazdadjoke.com/",
@@ -441,50 +498,6 @@
       }
 
       window.onload = getRandomJoke;
-
-      function addToHomeScreen() {
-        if (
-          window.navigator.standalone === true ||
-          window.matchMedia("(display-mode: standalone)").matches
-        ) {
-          // Already installed or running in standalone mode
-          return;
-        }
-
-        var deferredPrompt;
-        var addBtn = document.querySelector(".add-to-home-screen");
-
-        window.addEventListener("beforeinstallprompt", function (e) {
-          // Prevent the default prompt
-          e.preventDefault();
-
-          // Store the event for later use
-          deferredPrompt = e;
-
-          // Show the button
-          addBtn.style.display = "block";
-        });
-
-        addBtn.addEventListener("click", function () {
-          // Hide the button
-          addBtn.style.display = "none";
-
-          // Show the prompt
-          deferredPrompt.prompt();
-
-          // Wait for the user to respond
-          deferredPrompt.userChoice.then(function (choiceResult) {
-            if (choiceResult.outcome === "accepted") {
-              console.log("User accepted the A2HS prompt");
-            } else {
-              console.log("User dismissed the A2HS prompt");
-            }
-
-            // Clear the prompt variable
-            deferredPrompt = null;
-          });
-        });
-      }
 
       function searchJoke() {
         var searchTerm = document.getElementById("search-term").value;
