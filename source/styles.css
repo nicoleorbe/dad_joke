@@ -177,7 +177,8 @@ ul li a {
   background-color: var(--blue);
 }
 
-#twitter-share-button {
+#twitter-share-button,
+.save-button {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
@@ -186,8 +187,22 @@ ul li a {
   font-weight: bold;
 }
 
-#twitter-share-button:hover {
+#twitter-share-button:hover,
+.save-button:hover {
   background-color: var(--red);
+}
+
+.share {
+  text-align: center;
+  padding: 0 20px;
+  max-width: 940px;
+  margin: 20px auto 0 auto;
+  width: 100%;
+}
+
+.share h2 {
+  font-size: 18px;
+  color: var(--red);
 }
 
 .footer {

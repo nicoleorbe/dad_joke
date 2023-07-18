@@ -79,6 +79,7 @@
       sizes="16x16"
       href="images/favicon-16x16.png"
     />
+
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#da532c" />
@@ -151,7 +152,15 @@
               <div id="search-results"></div>
             </div>
           </div>
-
+          <div class="share">
+            <h2>
+              Enjoying yourself? Keep the fun going by saving this to your home
+              screen for quick access!
+            </h2>
+            <button class="save-button" onclick="addToHomeScreen()">
+              Add to Home Screen
+            </button>
+          </div>
           <div class="bottomad">
             <!-- This is where your 320x50 bottom ad code from Adsense goes -->
           </div>
@@ -362,6 +371,50 @@
       }
 
       window.onload = getRandomJoke;
+
+      function addToHomeScreen() {
+        if (
+          window.navigator.standalone === true ||
+          window.matchMedia("(display-mode: standalone)").matches
+        ) {
+          // Already installed or running in standalone mode
+          return;
+        }
+
+        var deferredPrompt;
+        var addBtn = document.querySelector(".add-to-home-screen");
+
+        window.addEventListener("beforeinstallprompt", function (e) {
+          // Prevent the default prompt
+          e.preventDefault();
+
+          // Store the event for later use
+          deferredPrompt = e;
+
+          // Show the button
+          addBtn.style.display = "block";
+        });
+
+        addBtn.addEventListener("click", function () {
+          // Hide the button
+          addBtn.style.display = "none";
+
+          // Show the prompt
+          deferredPrompt.prompt();
+
+          // Wait for the user to respond
+          deferredPrompt.userChoice.then(function (choiceResult) {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the A2HS prompt");
+            } else {
+              console.log("User dismissed the A2HS prompt");
+            }
+
+            // Clear the prompt variable
+            deferredPrompt = null;
+          });
+        });
+      }
 
       function searchJoke() {
         var searchTerm = document.getElementById("search-term").value;
