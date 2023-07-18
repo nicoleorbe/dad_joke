@@ -413,7 +413,7 @@
 
         var deferredPrompt;
         var addBtn = document.querySelector("#add-to-home-screen");
-
+        console.log(addBtn);
         window.addEventListener("beforeinstallprompt", function (e) {
           // Prevent the default prompt
           e.preventDefault();
@@ -428,10 +428,10 @@
         addBtn.addEventListener("click", function () {
           // Hide the button
           addBtn.style.display = "none";
-
+          // console.log(addBtn);
           // Show the prompt
           deferredPrompt.prompt();
-
+          // console.log(addBtn);
           // Wait for the user to respond
           deferredPrompt.userChoice.then(function (choiceResult) {
             if (choiceResult.outcome === "accepted") {
@@ -525,6 +525,17 @@
           event_category: "Twitter",
           event_label: "Share",
         });
+      }
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function (registration) {
+            console.log("Service Worker registered");
+          })
+          .catch(function (error) {
+            console.log("Service Worker registration failed:", error);
+          });
       }
     </script>
   </body>
