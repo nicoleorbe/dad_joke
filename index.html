@@ -402,6 +402,21 @@
         );
       }
 
+      // function share() {
+      //   if (
+      //     "navigator" in window &&
+      //     "standalone" in window.navigator &&
+      //     !window.navigator.standalone
+      //   ) {
+      //     // Check if the app is running in standalone mode
+      //     // or if the "Add to Home Screen" prompt should be shown
+      //     // Customize the prompt as needed
+      //     alert(
+      //       'To add this web app to your home screen, tap the "Share" icon below and select "Add to Home Screen".'
+      //     );
+      //   }
+      // }
+
       function share() {
         if (
           "navigator" in window &&
@@ -411,9 +426,31 @@
           // Check if the app is running in standalone mode
           // or if the "Add to Home Screen" prompt should be shown
           // Customize the prompt as needed
-          alert(
-            'To add this web app to your home screen, tap the "Share" icon below and select "Add to Home Screen".'
-          );
+
+          // Check if it's an Apple device (iPhone, iPad, iPod) using Safari or Chrome
+          if (
+            /(iPhone|iPod|iPad)/i.test(navigator.userAgent) &&
+            /(Safari|CriOS)/i.test(navigator.userAgent)
+          ) {
+            alert(
+              'To add this web app to your home screen, follow these steps:\n\n1. Tap the "Share" icon below.\n2. Choose "Add to Home Screen" from the options.'
+            );
+          }
+          // Check if it's an Android device using Chrome
+          else if (
+            /Android/i.test(navigator.userAgent) &&
+            /Chrome/i.test(navigator.userAgent)
+          ) {
+            alert(
+              'To add this web app to your home screen, follow these steps:\n\n1. Tap the "Share" icon below.\n2. Select "Add to Home Screen" from the options for Android devices using Chrome.'
+            );
+          }
+          // For other devices and browsers, show a generic prompt
+          else {
+            alert(
+              'To add this web app to your home screen, follow these steps:\n\n1. Tap the "Share" icon below.\n2. Look for an option like "Add to Home Screen" or "Install App".'
+            );
+          }
         }
       }
 
