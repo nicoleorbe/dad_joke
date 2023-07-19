@@ -193,7 +193,11 @@
               Enjoying yourself? Keep the fun going by saving this to your home
               screen for quick access!
             </h2>
-            <button class="save-button" id="add-to-home-screen">
+            <button
+              class="save-button"
+              id="add-to-home-screen"
+              style="margin-bottom: 20px"
+            >
               Add to Home Screen
             </button>
           </div>
@@ -406,63 +410,20 @@
         );
       }
 
-      let deferredPrompt;
-
-      window.addEventListener("beforeinstallprompt", (event) => {
-        // Prevent the default "Add to Home Screen" prompt
-        event.preventDefault();
-        console.log(event);
-        // Store the event for later use
-        deferredPrompt = event;
-
-        // Show your custom "Add to Home Screen" button
-        const addToHomeScreenBtn =
-          document.getElementById("add-to-home-screen");
-
-        if (addToHomeScreenBtn) {
-          addToHomeScreenBtn.style.display = "block";
+      function share() {
+        if (navigator.share) {
+          navigator
+            .share({
+              title: "Get Dad Jokes",
+              text: "Check out this awesome web app!",
+              url: "https://www.get-dad-jokes.com",
+            })
+            .then(() => console.log("Successful share"))
+            .catch((error) => console.log("Error sharing:", error));
+        } else {
+          alert("Sharing is not supported on this device or browser.");
         }
-      });
-
-      const addToHomeScreenBtn = document.getElementById("add-to-home-screen");
-
-      if (addToHomeScreenBtn) {
-        addToHomeScreenBtn.addEventListener("click", () => {
-          console.log(addToHomeScreenBtn);
-          if (deferredPrompt) {
-            // Show the native "Add to Home Screen" prompt
-            deferredPrompt.prompt();
-
-            // Wait for the user's response
-            deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === "accepted") {
-                console.log('User accepted the "Add to Home Screen" prompt');
-              } else {
-                console.log('User dismissed the "Add to Home Screen" prompt');
-              }
-
-              // Clear the deferredPrompt variable
-              deferredPrompt = null;
-            });
-          }
-        });
       }
-
-      // function addToHomeScreen() {
-      //   if (navigator.share) {
-      //     navigator
-      //       .share({
-      //         title: "Get Dad Jokes",
-      //         text: "Check out this awesome web app!",
-      //         url: "https://www.get-dad-jokes.com",
-      //       })
-      //       .then(() => console.log("Successful share"))
-      //       .catch((error) => console.log("Error sharing:", error));
-      //   } else {
-      //     alert("Sharing is not supported on this device or browser.");
-      //   }
-      // }
-
       // Set timeout for 10 seconds (10000 milliseconds)
       setTimeout(showPopup, 10000);
 
