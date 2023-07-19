@@ -403,19 +403,20 @@
       }
 
       function share() {
-        if (navigator.share) {
-          navigator
-            .share({
-              title: "Get Dad Jokes",
-              text: "Check out this awesome web app!",
-              url: "https://www.get-dad-jokes.com",
-            })
-            .then(() => console.log("Successful share"))
-            .catch((error) => console.log("Error sharing:", error));
-        } else {
-          alert("Sharing is not supported on this device or browser.");
+        if (
+          "navigator" in window &&
+          "standalone" in window.navigator &&
+          !window.navigator.standalone
+        ) {
+          // Check if the app is running in standalone mode
+          // or if the "Add to Home Screen" prompt should be shown
+          // Customize the prompt as needed
+          alert(
+            'To add this web app to your home screen, tap the "Share" icon below and select "Add to Home Screen".'
+          );
         }
       }
+
       // Set timeout for 10 seconds (10000 milliseconds)
       setTimeout(showPopup, 10000);
 
