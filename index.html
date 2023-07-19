@@ -7,7 +7,20 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9444971163268985"
       crossorigin="anonymous"
     ></script>
-
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T6SHFD56");
+    </script>
+    <!-- End Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -96,6 +109,16 @@
   </head>
 
   <body id="body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T6SHFD56"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- pop-up -->
     <div id="popup" style="display: none">
       <div id="popup-content">
@@ -406,6 +429,16 @@
       }
 
       function share() {
+        console.log("Save button clicked.");
+        // Define event_category variable
+        var event_category = "Save";
+
+        // Send event to Google Analytics
+        gtag("event", "share", {
+          event_category: event_category,
+          event_label: "Share",
+        });
+
         // Check if it's a mobile device
         if (/Mobi|Android/i.test(navigator.userAgent)) {
           if (
@@ -520,6 +553,7 @@
       }
 
       function trackTwitterShare() {
+        console.log("Twitter share button clicked.");
         // Define event_category variable
         var event_category = "Twitter";
 
@@ -528,9 +562,6 @@
           event_category: event_category,
           event_label: "Share",
         });
-
-        // Optionally, you can log the event_category variable if needed
-        // console.log(event_category);
       }
 
       if ("serviceWorker" in navigator) {
