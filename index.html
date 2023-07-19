@@ -411,21 +411,24 @@
       window.addEventListener("beforeinstallprompt", (event) => {
         // Prevent the default "Add to Home Screen" prompt
         event.preventDefault();
-
+        console.log(event);
         // Store the event for later use
         deferredPrompt = event;
 
         // Show your custom "Add to Home Screen" button
         const addToHomeScreenBtn =
           document.getElementById("add-to-home-screen");
+
         if (addToHomeScreenBtn) {
           addToHomeScreenBtn.style.display = "block";
         }
       });
 
       const addToHomeScreenBtn = document.getElementById("add-to-home-screen");
+
       if (addToHomeScreenBtn) {
         addToHomeScreenBtn.addEventListener("click", () => {
+          console.log(addToHomeScreenBtn);
           if (deferredPrompt) {
             // Show the native "Add to Home Screen" prompt
             deferredPrompt.prompt();
