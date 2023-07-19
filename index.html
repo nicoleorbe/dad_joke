@@ -360,7 +360,6 @@
     </div>
 
     <script>
-      // document.addEventListener("DOMContentLoaded", function () {
       // Function to check if the popup has been displayed
       function isPopupDisplayed() {
         return localStorage.getItem("popupDisplayed") === "true";
@@ -404,50 +403,65 @@
         );
       }
 
-      var deferredPrompt;
-
       function addToHomeScreen() {
-        if (
-          window.navigator.standalone === true ||
-          window.matchMedia("(display-mode: standalone)").matches
-        ) {
-          // Already installed or running in standalone mode
-          return;
+        if (navigator.share) {
+          navigator
+            .share({
+              title: "Get Dad Jokes",
+              text: "Check out this awesome web app!",
+              url: "https://www.get-dad-jokes.com",
+            })
+            .then(() => console.log("Successful share"))
+            .catch((error) => console.log("Error sharing:", error));
+        } else {
+          alert("Sharing is not supported on this device or browser.");
         }
-
-        var addBtn = document.querySelector("#add-to-home-screen");
-
-        window.addEventListener("beforeinstallprompt", function (e) {
-          // Prevent the default prompt
-          e.preventDefault();
-
-          // Store the event for later use
-          deferredPrompt = e;
-
-          // Show the button
-          addBtn.style.display = "block";
-        });
-
-        addBtn.addEventListener("click", function () {
-          // Hide the button
-          addBtn.style.display = "none";
-
-          // Show the prompt
-          deferredPrompt.prompt();
-
-          // Wait for the user to respond
-          deferredPrompt.userChoice.then(function (choiceResult) {
-            if (choiceResult.outcome === "accepted") {
-              console.log("User accepted the A2HS prompt");
-            } else {
-              console.log("User dismissed the A2HS prompt");
-            }
-
-            // Clear the prompt variable
-            deferredPrompt = null;
-          });
-        });
       }
+
+      // var deferredPrompt;
+
+      // function addToHomeScreen() {
+      //   if (
+      //     window.navigator.standalone === true ||
+      //     window.matchMedia("(display-mode: standalone)").matches
+      //   ) {
+      //     // Already installed or running in standalone mode
+      //     return;
+      //   }
+
+      //   var addBtn = document.querySelector("#add-to-home-screen");
+
+      //   window.addEventListener("beforeinstallprompt", function (e) {
+      //     // Prevent the default prompt
+      //     e.preventDefault();
+
+      //     // Store the event for later use
+      //     deferredPrompt = e;
+
+      //     // Show the button
+      //     addBtn.style.display = "block";
+      //   });
+
+      //   addBtn.addEventListener("click", function () {
+      //     // Hide the button
+      //     addBtn.style.display = "none";
+
+      //     // Show the prompt
+      //     deferredPrompt.prompt();
+
+      //     // Wait for the user to respond
+      //     deferredPrompt.userChoice.then(function (choiceResult) {
+      //       if (choiceResult.outcome === "accepted") {
+      //         console.log("User accepted the A2HS prompt");
+      //       } else {
+      //         console.log("User dismissed the A2HS prompt");
+      //       }
+
+      //       // Clear the prompt variable
+      //       deferredPrompt = null;
+      //     });
+      //   });
+      // }
 
       // Set timeout for 10 seconds (10000 milliseconds)
       setTimeout(showPopup, 10000);
@@ -540,7 +554,6 @@
             console.log("Service Worker registration failed:", error);
           });
       }
-      // });
     </script>
   </body>
 </html>
