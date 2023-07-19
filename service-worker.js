@@ -1,20 +1,16 @@
-self.addEventListener("install", function (event) {
-  event.waitUntil(
-    caches.open("my-cache").then(function (cache) {
-      return cache.addAll([
-        "/index.html",
-        "source/styles.css",
-        "/index.js",
-        // Add more assets to cache
-      ]);
-    })
-  );
-});
-
-self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(function (response) {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then((response) => {
+        // Do any additional processing on the response if needed
+        return response;
+      })
+      .catch((error) => {
+        console.error("Error fetching:", error);
+        // Optionally, you can return a custom response for failed fetch requests
+        return new Response("An error occurred while fetching.", {
+          status: 500,
+        });
+      })
   );
 });
