@@ -428,16 +428,55 @@
         );
       }
 
+      // Function to track the "Add to Home Screen" event
+      function trackAddToHomeScreenEvent(action) {
+        // Identify the event name and parameters
+        const eventName = "AddToHomeScreen";
+        const deviceType = /Mobi|Android/i.test(navigator.userAgent)
+          ? "Mobile"
+          : "Desktop";
+        const browser = /(Safari|CriOS|Chrome|Android)/i.test(
+          navigator.userAgent
+        )
+          ? navigator.userAgent.match(/(Safari|CriOS|Chrome|Android)/i)[0]
+          : "Other";
+
+        // Trigger the custom event in GA4
+        gtag("event", eventName, {
+          event_category: "HomeScreen",
+          event_label: action,
+          device_type: deviceType,
+          browser: browser,
+        });
+      }
+
       function share() {
         console.log("Save button clicked.");
-        // Define event_category variable
-        var event_category = "Save";
 
-        // Send event to Google Analytics
-        gtag("event", "share", {
-          event_category: event_category,
-          event_label: "Share",
-        });
+        // Function to track the "Add to Home Screen" event
+        function trackAddToHomeScreenEvent(action) {
+          // Identify the event name and parameters
+          const eventName = "AddToHomeScreen";
+          const deviceType = /Mobi|Android/i.test(navigator.userAgent)
+            ? "Mobile"
+            : "Desktop";
+          const browser = /(Safari|CriOS|Chrome|Android)/i.test(
+            navigator.userAgent
+          )
+            ? navigator.userAgent.match(/(Safari|CriOS|Chrome|Android)/i)[0]
+            : "Other";
+
+          // Trigger the custom event in GA4
+          gtag("event", eventName, {
+            event_category: "HomeScreen",
+            event_label: action,
+            device_type: deviceType,
+            browser: browser,
+          });
+        }
+
+        // Call the function to track the event when the "Share" icon is clicked
+        trackAddToHomeScreenEvent("IconClicked");
 
         // Check if it's a mobile device
         if (/Mobi|Android/i.test(navigator.userAgent)) {
@@ -478,6 +517,52 @@
           );
         }
       }
+
+      // original share
+      // function share() {
+      //   console.log("Save button clicked.");
+
+      //   // Check if it's a mobile device
+      //   if (/Mobi|Android/i.test(navigator.userAgent)) {
+      //     if (
+      //       "navigator" in window &&
+      //       "standalone" in window.navigator &&
+      //       !window.navigator.standalone
+      //     ) {
+      //       // Check if it's an Apple device (iPhone, iPad, iPod) using Safari or Chrome
+      //       if (
+      //         /(iPhone|iPod|iPad)/i.test(navigator.userAgent) &&
+      //         /(Safari|CriOS)/i.test(navigator.userAgent)
+      //       ) {
+      //         alert(
+      //           'To add this web app to your home screen, follow these steps:\n\n1. Tap the "Share" icon below.\n2. Choose "Add to Home Screen" from the options.'
+      //         );
+      //       }
+      //       // Check if it's an Android device using Chrome
+      //       else if (
+      //         /Android/i.test(navigator.userAgent) &&
+      //         /Chrome/i.test(navigator.userAgent)
+      //       ) {
+      //         alert(
+      //           'To add this web app to your home screen, follow these steps:\n\n1. Tap the "Share" icon below.\n2. Select "Add to Home Screen" from the options for Android devices using Chrome.'
+      //         );
+      //       }
+      //       // For other mobile devices and browsers, show a generic prompt
+      //       else {
+      //         alert(
+      //           'To add this web app to your home screen, follow these steps:\n\n1. Tap the "Share" icon below.\n2. Look for an option like "Add to Home Screen" or "Install App".'
+      //         );
+      //       }
+      //     }
+      //   } else {
+      //     // For desktop devices, instruct users to bookmark the web app
+      //     alert(
+      //       'To bookmark this web app, choose a method:\n\n1. "Ctrl+D" (Windows) or "Cmd+D" (Mac) on your keyboard \n2. Select the "Bookmark this Tab" option in your browser. '
+      //     );
+      //   }
+
+      //   trackAddToHomeScreenEvent("PromptShown");
+      // }
 
       // Set timeout for 10 seconds (10000 milliseconds)
       setTimeout(showPopup, 10000);
