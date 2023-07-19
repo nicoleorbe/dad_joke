@@ -553,11 +553,17 @@
       }
 
       function trackTwitterShare() {
+        // Define event_category variable
+        var event_category = "Twitter";
+
         // Send event to Google Analytics
         gtag("event", "share", {
-          event_category: "Twitter",
+          event_category: event_category,
           event_label: "Share",
         });
+
+        // Optionally, you can log the event_category variable if needed
+        // console.log(event_category);
       }
 
       if ("serviceWorker" in navigator) {
