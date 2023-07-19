@@ -416,12 +416,16 @@
         deferredPrompt = event;
 
         // Show your custom "Add to Home Screen" button
-        document.getElementById("add-to-home-screen").style.display = "block";
+        const addToHomeScreenBtn =
+          document.getElementById("add-to-home-screen");
+        if (addToHomeScreenBtn) {
+          addToHomeScreenBtn.style.display = "block";
+        }
       });
 
-      document
-        .getElementById("add-to-home-screen")
-        .addEventListener("click", () => {
+      const addToHomeScreenBtn = document.getElementById("add-to-home-screen");
+      if (addToHomeScreenBtn) {
+        addToHomeScreenBtn.addEventListener("click", () => {
           if (deferredPrompt) {
             // Show the native "Add to Home Screen" prompt
             deferredPrompt.prompt();
@@ -439,6 +443,7 @@
             });
           }
         });
+      }
 
       // function addToHomeScreen() {
       //   if (navigator.share) {
