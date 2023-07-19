@@ -25,14 +25,3 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
-
-// Handle the "Add to Home Screen" prompt
-self.addEventListener("beforeinstallprompt", (event) => {
-  // Prevent the default "Add to Home Screen" prompt
-  event.preventDefault();
-
-  // Show your custom "Add to Home Screen" button or banner
-  // You can add a button or banner to encourage users to install your app.
-  // For example:
-  // showAddToHomeScreenBanner();
-});
